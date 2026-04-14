@@ -177,6 +177,35 @@ a {
   }
 }
 
+/* Ensure links inside headings use link color, not heading color */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  a:not(.hanchor) {
+    @include themed {
+      color: t($text-links);
+    }
+  }
+}
+
+/* Bold and italic — Night Owl accent colors */
+strong,
+b {
+  @include themed {
+    color: $no-accent-green;
+  }
+}
+
+em,
+i {
+  @include themed {
+    color: $no-accent-purple;
+  }
+}
+
 p {
   margin: $spacer-normal 0;
 }
