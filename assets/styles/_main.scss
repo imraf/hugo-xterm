@@ -163,7 +163,7 @@ a {
     color: t($text-links);
   }
 
-  /* External links */
+  /* External links — excluding site header and footer nav */
   &[href^="http"],
   &[href^="https"] {
     color: #ff869a;
