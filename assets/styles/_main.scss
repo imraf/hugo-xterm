@@ -163,6 +163,12 @@ a {
     color: t($text-links);
   }
 
+  /* External links */
+  &[href^="http"],
+  &[href^="https"] {
+    color: #ff869a;
+  }
+
   @media print {
     &::after {
       margin-left: $spacer-smallest;
