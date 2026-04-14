@@ -1,4 +1,6 @@
-/* Shortcuts */
+/* Night Owl — single dark theme only, no light/dark toggle */
+
+/* Token key shortcuts */
 $accent: "accent";
 $background: "background";
 $text: "text";
@@ -13,8 +15,14 @@ $code-background: "code-background";
 $blockquote-background: "blockquote-background";
 $button-text: "button-text";
 $button-background: "button-background";
+$h1-color: "h1-color";
+$h2-color: "h2-color";
+$h3-color: "h3-color";
+$h4-color: "h4-color";
+$h5-color: "h5-color";
+$h6-color: "h6-color";
 
-/* Syntax highlighting colors variables */
+/* Syntax highlighting token keys */
 $syn-bg: "syn-bg";
 $syn-fg: "syn-fg";
 $syn-kw: "syn-kw";
@@ -22,74 +30,51 @@ $syn-ld: "syn-ld";
 $syn-lse: "syn-lse";
 $syn-n: "syn-n";
 $syn-na: "syn-na";
+$syn-num: "syn-num";
 
-/* Syntax highlighting common colors based on monokailight and monokai */
-$syn-c: #75715e;
-$syn-op: #f92672;
-$syn-l: #ae81ff;
+/* Syntax highlighting fixed colors (Night Owl) */
+$syn-c: #637777; /* comments  — dark teal */
+$syn-op: #7fdbca; /* operators — cyan      */
+$syn-l: #f78c6c; /* numbers   — orange    */
 
-/* Themes */
+/* Single theme map — always dark */
 $themes: (
-  light: (
-    $accent: $accent--light,
-    $background: $background--light,
-    $text: $text--light,
-    $text-links: $text-links--light,
-    $text-accent: scale-color($accent--light, $lightness: 30%),
-    $text-brighter:
-      scale-color($text--light, $saturation: 40%, $lightness: 20%),
-    $text-duller:
-      scale-color($text--light, $saturation: -90%, $lightness: -10%),
-    $background-brighter: scale-color($background--light, $lightness: -5%),
-    $background-grey:
-      scale-color($accent--light, $saturation: -80%, $lightness: 90%),
-    $code-text: scale-color($accent--light, $hue: -90%, $lightness: -45%),
-    $code-background: scale-color($background--light, $lightness: 60%),
-    $blockquote-background: darken($background--light, 2%),
-    $button-text: darken($text--light, 5%),
-    $button-background: darken($background--light, 5%),
-    $syn-bg: #fafafa,
-    $syn-fg: #272822,
-    $syn-kw: #00a8c8,
-    $syn-ld: #d88200,
-    $syn-lse: #8045ff,
-    $syn-n: #111,
-    $syn-na: #75af00,
-  ),
   dark: (
-    $accent: $accent--dark,
-    $background: $background--dark,
-    $text: $text--dark,
-    $text-links: $text-links--dark,
-    $text-accent: scale-color($accent--dark, $lightness: 60%),
-    $text-brighter:
-      scale-color($text--dark, $saturation: 60%, $lightness: 60%),
-    $text-duller:
-      scale-color($text--dark, $saturation: -90%, $lightness: -20%),
-    $background-brighter: scale-color($background--dark, $lightness: 20%),
-    $background-grey:
-      scale-color($accent--dark, $saturation: -90%, $lightness: -70%),
-    $code-text: scale-color($accent--dark, $hue: -90%, $lightness: 45%),
-    $code-background: scale-color($background--dark, $lightness: 20%),
-    $blockquote-background: lighten($background--dark, 5%),
-    $button-text: lighten($text--dark, 10%),
-    $button-background: lighten($background--dark, 15%),
-    $syn-bg: #272822,
-    $syn-fg: #f8f8f2,
-    $syn-kw: #66d9ef,
-    $syn-ld: #e6db74,
-    $syn-lse: #ae81ff,
-    $syn-n: #f8f8f2,
-    $syn-na: #a6e22e,
+    $accent: $no-accent-blue,
+    $background: $no-bg-primary,
+    $text: $no-text-primary,
+    $text-links: $no-accent-cyan,
+    $text-accent: $no-accent-blue,
+    $text-brighter: #ffffff,
+    $text-duller: $no-text-secondary,
+    $background-brighter: $no-bg-secondary,
+    $background-grey: $no-bg-tertiary,
+    $code-text: $no-text-primary,
+    $code-background: $no-bg-tertiary,
+    $blockquote-background: rgba(127, 219, 202, 0.1),
+    $button-text: $no-text-primary,
+    $button-background: $no-bg-secondary,
+    $h1-color: $no-accent-blue,
+    $h2-color: $no-accent-cyan,
+    $h3-color: $no-accent-green,
+    $h4-color: $no-accent-yellow,
+    $h5-color: $no-accent-orange,
+    $h6-color: $no-accent-purple,
+    $syn-bg: $no-bg-tertiary,
+    $syn-fg: $no-text-primary,
+    $syn-kw: $no-accent-purple,
+    $syn-ld: $no-accent-yellow,
+    $syn-lse: $no-accent-blue,
+    $syn-n: $no-text-primary,
+    $syn-na: $no-accent-green,
+    $syn-num: $no-accent-orange,
   ),
 );
 
-/* Current theme global variable */
-$current-theme: null;
+/* Always resolve to the dark theme */
+$current-theme: map-get($themes, "dark");
 
 @mixin themed() {
-  $current-theme: map-get($themes, "light") !global;
-
   & {
     @content;
   }
@@ -97,17 +82,6 @@ $current-theme: null;
   @media print {
     & {
       @content;
-    }
-  }
-
-  $themes-local: map-remove($themes, "light");
-
-  @each $theme-name, $theme-map in $themes-local {
-    .theme--#{$theme-name} & {
-      $current-theme: $theme-map !global;
-      @content;
-
-      $current-theme: null !global;
     }
   }
 }

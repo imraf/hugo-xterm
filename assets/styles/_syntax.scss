@@ -1,22 +1,29 @@
 /* syntax highlighted code layout */
 div.highlight-wrapper {
   margin: $spacer-large 0;
-  border-radius: $spacer-2;
-  border: $spacer-1 solid;
+  border-radius: 0;
+  border: $spacer-1 solid $no-border;
+}
+
+/* plain <pre><code> blocks (no language specified) */
+pre {
+  overflow-x: auto;
+  padding: $spacer-smallest $spacer-small;
+  margin: $spacer-large 0;
 
   @include themed {
-    border-color: t($background-brighter);
+    background-color: t($code-background);
+    color: t($code-text);
   }
 }
 
 div.highlight-wrapper div.highlight-toolbar {
   display: flex;
-  border-bottom: $spacer-1 solid;
+  border-bottom: $spacer-1 solid $no-border;
 
   @include themed {
     color: t($text-brighter);
-    background: t($background-grey);
-    border-color: t($background-brighter);
+    background: $no-bg-secondary;
   }
 
   .item {
@@ -41,7 +48,10 @@ div.highlight-wrapper div.highlight-toolbar {
 div.highlight .chroma {
   margin: 0;
   padding: $spacer-smallest 0;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: visible;
+  /* override Hugo's inline background-color on <pre> */
+  background-color: $no-bg-tertiary !important;
 }
 
 div.highlight .chroma code {

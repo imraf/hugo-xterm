@@ -64,3 +64,4 @@ baseurl = "https://manid2.github.io/hugo-xterm/"
     lineNos = true
     lineNumbersInTable = false
     noClasses = false
+    style = "monokai"

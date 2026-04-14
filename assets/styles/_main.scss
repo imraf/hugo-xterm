@@ -66,27 +66,53 @@ body {
   }
 }
 
-h1,
-h2,
-h3 {
-  @include themed {
-    border-color: t($accent);
-  }
-}
-
+/* Headings — each level gets its own Night Owl accent color */
 h1 {
   font-size: $font-size * 2;
   border-bottom: $spacer-2 dotted;
+
+  @include themed {
+    color: t($h1-color);
+    border-color: t($h1-color);
+  }
 }
 
 h2 {
   font-size: $font-size * 1.6;
   border-bottom: $spacer-1 solid;
+
+  @include themed {
+    color: t($h2-color);
+    border-color: t($h2-color);
+  }
 }
 
 h3 {
   font-size: $font-size * 1.25;
   border-bottom: $spacer-1 dashed;
+
+  @include themed {
+    color: t($h3-color);
+    border-color: t($h3-color);
+  }
+}
+
+h4 {
+  @include themed {
+    color: t($h4-color);
+  }
+}
+
+h5 {
+  @include themed {
+    color: t($h5-color);
+  }
+}
+
+h6 {
+  @include themed {
+    color: t($h6-color);
+  }
 }
 
 h1,
@@ -157,8 +183,7 @@ p {
 
 code {
   font-family: $font-family-mono;
-  border-radius: $spacer-2;
-  padding: $spacer-2 $spacer-smallest;
+  border-radius: 0;
 
   @include themed {
     color: t($code-text);
@@ -235,7 +260,7 @@ blockquote {
   @include themed {
     color: t($text-brighter);
     background: t($blockquote-background);
-    border-color: t($accent);
+    border-color: t($text-links);
   }
 
   @media print {
@@ -273,11 +298,11 @@ table {
 table,
 th,
 td {
-  border: $spacer-1 dashed;
+  border: $spacer-1 solid;
   padding: $spacer-smallest;
 
   @include themed {
-    border-color: t($accent);
+    border-color: $no-border;
   }
 
   @media print {
@@ -336,7 +361,7 @@ ol {
     text-align: right;
 
     @include themed {
-      color: $accent;
+      color: t($accent);
     }
   }
 
@@ -364,7 +389,7 @@ hr {
   height: $spacer-1;
 
   @include themed {
-    background: t($accent);
+    background: $no-border;
   }
 
   @media print {

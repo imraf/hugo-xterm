@@ -1,9 +1,9 @@
-/* Syntax highlighting styles */
+/* Syntax highlighting styles — Night Owl palette */
 .chroma .ln {
   white-space: pre;
   user-select: none;
   padding: 0 0.4em;
-  color: #7f7f7f;
+  color: $no-text-muted;
 }
 
 .chroma .cl {
@@ -24,22 +24,23 @@
 
 /* Syntax highlighting colors */
 .chroma .err {
-  color: #960050;
-  background-color: #1e0010;
+  color: #ef5350;
+  background-color: #1d3b53;
 }
 
 .chroma .hl {
-  background-color: #ffc;
+  background-color: $no-selection;
 }
 
 .bg,
 .chroma {
   @include themed {
     color: t($syn-fg);
-    background-color: t($syn-bg);
+    background-color: t($syn-bg) !important;
   }
 }
 
+/* Keywords — purple, italic */
 .chroma .k,
 .chroma .kc,
 .chroma .kd,
@@ -47,11 +48,14 @@
 .chroma .kr,
 .chroma .kt,
 .chroma .no {
+  font-style: italic;
+
   @include themed {
     color: t($syn-kw);
   }
 }
 
+/* Operators / namespace keywords / tags — cyan */
 .chroma .kn,
 .chroma .nt,
 .chroma .o,
@@ -60,12 +64,14 @@
   color: $syn-op;
 }
 
+/* Plain names — primary text */
 .chroma .n {
   @include themed {
     color: t($syn-n);
   }
 }
 
+/* Functions / attributes / classes — green */
 .chroma .na,
 .chroma .nc,
 .chroma .nd,
@@ -78,6 +84,7 @@
   }
 }
 
+/* Strings — yellow */
 .chroma .ld,
 .chroma .s,
 .chroma .sa,
@@ -97,6 +104,7 @@
   }
 }
 
+/* Numbers / literals — orange */
 .chroma .l,
 .chroma .se,
 .chroma .m,
@@ -106,9 +114,12 @@
 .chroma .mi,
 .chroma .il,
 .chroma .mo {
-  color: $syn-l;
+  @include themed {
+    color: t($syn-num);
+  }
 }
 
+/* Comments — dark teal, italic */
 .chroma .c,
 .chroma .ch,
 .chroma .cm,
@@ -118,30 +129,5 @@
 .chroma .cpf,
 .chroma .gu {
   color: $syn-c;
+  font-style: italic;
 }
-
-/* Commented to fix linter errors, uncomment when needed.
-.chroma .x,
-.chroma .nb,
-.chroma .bp,
-.chroma .ni,
-.chroma .fm,
-.chroma .nl,
-.chroma .nn,
-.chroma .py,
-.chroma .nv,
-.chroma .vc,
-.chroma .vg,
-.chroma .vi,
-.chroma .vm,
-.chroma .p,
-.chroma .g,
-.chroma .gr,
-.chroma .gh,
-.chroma .go,
-.chroma .gp,
-.chroma .gt,
-.chroma .gl,
-.chroma .w {
-}
-*/

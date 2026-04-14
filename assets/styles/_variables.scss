@@ -1,12 +1,12 @@
 /* Fonts */
 $font-family-title: "Roboto Slab", "Times New Roman", garamond, serif;
 $font-family-normal: "Fira Sans", arial, helvetica, sans-serif;
-$font-family-mono: "Ubuntu Mono", monaco, consolas, monospace;
+$font-family-mono: "JetBrains Mono", "Cascadia Code", "Fira Code", monospace;
 
 /* Font weights */
 $font-light: 300;
 $font-normal: 400;
-$font-bold: 500;
+$font-bold: 600;
 
 /* Font sizes */
 $font-size: 1rem;
@@ -26,44 +26,23 @@ $spacer-large: $spacer-small * 3;
 $spacer-large2: $spacer-small * 4;
 $spacer-largest: $spacer-small * 6;
 
-/* Colors */
-$blue: hsl(
-  $hue: 240deg,
-  $saturation: 100%,
-  $lightness: 50%,
-);
-
-/* Light theme colors */
-$accent--light: $blue;
-$background--light: scale-color(
-  $accent--light,
-  $saturation: -60%,
-  $lightness: 90%
-);
-$text--light: scale-color(
-  $accent--light,
-  $saturation: -60%,
-  $lightness: -50%
-);
-$text-links--light: adjust-color(
-  $accent--light,
-  $hue: -90deg,
-  $lightness: -30%
-);
-
-/* Dark theme colors */
-$accent--dark: $blue;
-$background--dark: scale-color(
-  $accent--dark,
-  $saturation: -80%,
-  $lightness: -80%
-);
-$text--dark: scale-color($accent--dark, $lightness: 80%);
-$text-links--dark: adjust-color(
-  $accent--dark,
-  $hue: -90deg,
-  $lightness: -10%
-);
+/* Night Owl color palette */
+$no-bg-primary: #011627;
+$no-bg-secondary: #0b253a;
+$no-bg-tertiary: #021320;
+$no-bg-tab-active: #0b2942;
+$no-text-primary: #d6deeb;
+$no-text-secondary: #5f7e97;
+$no-text-muted: #4b6479;
+$no-accent-blue: #82aaff;
+$no-accent-cyan: #7fdbca;
+$no-accent-green: #c5e478;
+$no-accent-yellow: #ecc48d;
+$no-accent-orange: #f78c6c;
+$no-accent-red: #ef5350;
+$no-accent-purple: #c792ea;
+$no-border: #122d42;
+$no-selection: #1d3b53;
 
 /* Media queries */
 $phone: "max-width: 684px";

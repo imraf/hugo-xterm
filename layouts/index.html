@@ -1,0 +1,7 @@
+{{- define "main" }} {{- $posts := site.GetPage "posts" }}
+<article class="post">
+  <div class="post-content">{{- partial "post-entries.html" $posts -}}</div>
+
+  <footer class="post-footer">{{- partial "pagination.html" $posts -}}</footer>
+</article>
+{{- end }}
