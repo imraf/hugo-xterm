@@ -98,7 +98,7 @@
   /* Keep all navbar links cyan regardless of href scheme */
   a {
     @include themed {
-      color: t($text-links);
+      color: t($text-links) !important;
     }
   }
 
