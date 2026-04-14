@@ -34,7 +34,12 @@
     </header>
 
     {{- if .Params.Cover }}
-      <img src="{{ absURL .Params.Cover }}" class="post-cover" {{ with .Params.CoverAlt }}alt="{{ . | plainify }}"{{ end }} />
+      {{- $cover := .Resources.GetMatch .Params.Cover }}
+      {{- if $cover }}
+        <img src="{{ $cover.RelPermalink }}" class="post-cover" {{ with .Params.CoverAlt }}alt="{{ . | plainify }}"{{ end }} />
+      {{- else }}
+        <img src="{{ absURL .Params.Cover }}" class="post-cover" {{ with .Params.CoverAlt }}alt="{{ . | plainify }}"{{ end }} />
+      {{- end }}
     {{- end }}
 
     {{- if and (.Param "toc") (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}
